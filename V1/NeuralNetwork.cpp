@@ -122,7 +122,7 @@ void NeuralNetwork::PrintCost(vector<Sample> data)
 
         iter++;
     }
-    cout << "Cost: " << totalCost << "Precent Error: " << totalError / iter << "%" << endl;
+    cout << "Cost: " << totalCost << "Precent Accuracy: " << totalError / iter << "%" << endl;
 }
 void NeuralNetwork::Back_prop(vector<Sample> data)
 {
