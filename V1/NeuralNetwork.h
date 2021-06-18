@@ -58,6 +58,10 @@ public:
     inline float Sigmoid_d(float x);
 
     inline float ReLU_d(float x);
+	
+	void SaveValues();
+    
+    void LoadValues();
 
 
     

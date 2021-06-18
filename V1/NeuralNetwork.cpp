@@ -183,3 +183,58 @@ void NeuralNetwork::Back_prop(vector<Sample> data)
 
     }
 }
+void NeuralNetwork::SaveValues()
+{
+    fstream file;
+    file.open("values.txt", ios::out);
+    for(float val:W1)
+    {
+        file << val << endl;
+    }
+    for (float val : W2)
+    {
+        file << val << endl;
+    }
+    for (float val : b1)
+    {
+        file << val << endl;
+    }
+    
+    file << b2 << endl;
+    
+
+    file.close();
+}
+void NeuralNetwork::LoadValues()
+{
+    fstream file;
+    file.open("values.txt", ios::in);
+
+    if (!file.good())
+    {
+        cout << "File with values does not exist!" << endl;
+        return;
+    }
+    string line;
+    int index = 1;
+    while (getline(file, line))
+    {
+        if (index>0&&index<=inputSize * HiddenLayerSize)
+        {
+            W1[index - 1] = stof(line);
+        }
+        if (index > inputSize * HiddenLayerSize && index <= (inputSize * HiddenLayerSize)+ HiddenLayerSize)
+        {
+            W2[(index - 1)- (inputSize * HiddenLayerSize)] = stof(line);
+        }
+        if (index > ((inputSize * HiddenLayerSize) + HiddenLayerSize) && index <= ((inputSize * HiddenLayerSize) + HiddenLayerSize*2))
+        {
+            b1[(index - 1)- ((inputSize * HiddenLayerSize) + HiddenLayerSize)] = stof(line);
+        }
+        if(index == ((inputSize * HiddenLayerSize) + HiddenLayerSize * 2)+1)
+            b2 = stof(line);
+
+        index++;
+    }
+
+}
