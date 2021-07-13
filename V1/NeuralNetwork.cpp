@@ -1,6 +1,7 @@
 #include "NeuralNetwork.h"
 #include <cmath>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
